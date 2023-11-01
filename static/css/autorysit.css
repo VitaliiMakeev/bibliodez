@@ -5,7 +5,9 @@
 }
 body {
     scroll-behavior: smooth;
-    background: linear-gradient(rgba(96, 96, 202, 0.7), white)
+    /*background: linear-gradient(rgba(96, 96, 202, 0.7), white)*/
+    background-image: url(../img/fon.jpg);
+    background-size: cover;
 }
 
 img {
@@ -23,6 +25,11 @@ img {
     padding: 40px;
     margin-bottom: 60px;
 }
+
+button {
+    cursor: pointer;
+}
+
 
 .headering {
     display: flex;

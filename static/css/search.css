@@ -5,7 +5,9 @@
 }
 body {
     scroll-behavior: smooth;
-    background: linear-gradient(rgba(96, 96, 202, 0.7), white);
+    /*background: linear-gradient(rgba(96, 96, 202, 0.7), white);*/
+    background-image: url(../img/fon.jpg);
+    background-size: cover;
 }
 
 img {
@@ -18,6 +20,11 @@ img {
     max-width: 80vw;
     margin: 0 auto;
 }
+
+button {
+    cursor: pointer;
+}
+
 
 .header {
     padding: 40px;
@@ -116,8 +123,8 @@ form button:hover {
 }
 
 .main {
-    background-image: url(../img/lupa2.png);
-    background-size: 80%;
+    /*background-image: url(../img/lupa2.png);
+    background-size: 80%;*/
     height: 80vh;
 }
 
