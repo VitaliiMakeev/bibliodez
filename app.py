@@ -140,6 +140,18 @@ def login_try():
         return render_template('autorysit.html')
 
 
+def check_email(email, list_mess):
+    count = 0
+    for k in list_mess:
+        print(count, k.get('email'))
+        if count < 3:
+            if k.get('email') == email:
+                count += 1
+        else:
+            return False
+    return True
+
+
 @app.route('/', methods=["GET", "POST"])
 def send_messag():
     if request.method == "POST":
@@ -153,11 +165,15 @@ def send_messag():
             return render_template('index.html')
         else:
             if len(name) != 0 and len(email) != 0 and len(messag) != 0:
-                cur2.execute(f"INSERT INTO messages(sender_name, sender_email, messag) VALUES('{name}', '{email}', '{messag}');")
-                cur2.close()
-                con.commit()
-                req = 'Сообщение отправлено!'
-                return render_template('index.html', req1=req)
+                if check_email(email, giv_messag()):
+                    cur2.execute(f"INSERT INTO messages(sender_name, sender_email, messag) VALUES('{name}', '{email}', '{messag}');")
+                    cur2.close()
+                    con.commit()
+                    req = 'Сообщение отправлено!'
+                    return render_template('index.html', req1=req)
+                else:
+                    req = 'Специалист с вами свяжется, ожидайте. Сообщение заблокированно.'
+                    return render_template('index.html', req1=req)
             else:
                 return render_template('index.html', req1=req)
     else:

@@ -16,6 +16,4 @@ import hashlib
 
 my_str = 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh'
 
-
-
 print(len(my_str))
