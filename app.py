@@ -166,11 +166,16 @@ def send_messag():
         else:
             if len(name) != 0 and len(email) != 0 and len(messag) != 0:
                 if check_email(email, giv_messag()):
-                    cur2.execute(f"INSERT INTO messages(sender_name, sender_email, messag) VALUES('{name}', '{email}', '{messag}');")
-                    cur2.close()
-                    con.commit()
-                    req = 'Сообщение отправлено!'
-                    return render_template('index.html', req1=req)
+                    if len(messag) > 198:
+                        req = f'Слишком много текста - {len(messag)} символов! НЕ БОЛЕЕ 200!'
+                        return render_template('index.html', req1=req)
+                    else:
+                        cur2.execute(
+                            f"INSERT INTO messages(sender_name, sender_email, messag) VALUES('{name}', '{email}', '{messag}');")
+                        cur2.close()
+                        con.commit()
+                        req = 'Сообщение отправлено!'
+                        return render_template('index.html', req1=req)
                 else:
                     req = 'Специалист с вами свяжется, ожидайте. Сообщение заблокированно.'
                     return render_template('index.html', req1=req)

@@ -5,7 +5,9 @@
 }
 body {
     scroll-behavior: smooth;
-    background: linear-gradient(rgba(96, 96, 202, 0.7), white);
+    /*background: linear-gradient(rgba(96, 96, 202, 0.7), white);*/
+    background-image: url(../img/fon.jpg);
+    background-size: cover;
 }
 
 img {
@@ -49,6 +51,10 @@ img {
 .headering a {
     color: white;
     font-size: 20px;
+}
+
+button {
+    cursor: pointer;
 }
 
 .hr-shadow {
@@ -101,10 +107,21 @@ form button {
     box-shadow: none;
 }
 
-form button:hover {
+.faund:hover {
     background-color: rgb(52, 77, 77);
     color: #dfd3d3;
 }
+
+.form button:hover {
+    background-color: rgb(52, 77, 77);
+    color: #dfd3d3;
+}
+
+.del-mess:hover {
+    background-color: rgb(52, 77, 77);
+    color: #dfd3d3;
+}
+
 
 .faund {
     margin-bottom: 3px;
