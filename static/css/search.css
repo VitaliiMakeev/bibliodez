@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Roboto&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
 }
 body {
+    font-family: 'Lato', sans-serif;
     scroll-behavior: smooth;
-    /*background: linear-gradient(rgba(96, 96, 202, 0.7), white);*/
-    background-image: url(../img/fon.jpg);
-    background-size: cover;
+    background: linear-gradient(rgba(96, 96, 202, 0.7), white);
+    /*background-image: url(../img/fon.jpg);
+    background-size: cover;*/
 }
 
 img {
