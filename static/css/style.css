@@ -8,8 +8,11 @@
 }
 body {
     font-family: 'Lato', sans-serif;
+    background-image: url(../img/fon2.jpg);
+    background-size: cover;
+    /*
     scroll-behavior: smooth;
-    background: linear-gradient(rgba(96, 96, 202, 0.7), white)
+    background: linear-gradient(rgba(96, 96, 202, 0.7), white)*/
     /*background-image: url(../img/fon.jpg);
     background-size: cover;*/
 }
@@ -48,6 +51,17 @@ button {
     margin-bottom: 10px;
 }
 
+.logo-comp img {
+    max-height: 60px;
+}
+
+.logo-comp img:hover {
+    /*border: 2px solid black;
+    border-radius: 15px;
+    */
+    max-height: 65px;
+}
+
 .navigation svg:hover {
     fill: #dfd3d3;
 }
@@ -80,11 +94,11 @@ button {
     align-items: center;
 }
 
-
+/*
 .main {
     background-image: url(../img/tmp/10.png);
 }
-
+*/
 
 form button:hover {
     background-color: rgb(52, 77, 77);
@@ -217,12 +231,12 @@ form button:hover {
     .main {
     background-image: none;
     }
-
+/*
     .content-text {
         background-image: url(../img/tmp/10.png);
         background-size: 100% 100%;
     }
-
+*/
     .callback {
         min-width: 768px;
     }
