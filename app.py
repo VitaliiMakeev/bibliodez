@@ -28,7 +28,7 @@ def found():
         return render_template('search.html')
     else:
         if len(element) != 0:
-            cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%';")
+            cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 100;")
             data = cur.fetchall()
             for i in data:
                 res_list.append({'name': i[1], 'content': i[2], 'link': i[3]})
@@ -45,7 +45,7 @@ def giv_messag():
     global con
     messag_res = []
     cur1 = con.cursor()
-    cur1.execute('SELECT id, messag, sender_name, sender_email FROM messages ORDER BY id DESC LIMIT 5;')
+    cur1.execute('SELECT id, messag, sender_name, sender_email FROM messages ORDER BY id DESC LIMIT 10;')
     data_mess = cur1.fetchall()
     if len(data_mess) != 0:
         for j in data_mess:
@@ -71,7 +71,7 @@ def found_adm():
             return render_template('admin.html')
         else:
             if len(element) != 0:
-                cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%';")
+                cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 100;")
                 data = cur.fetchall()
                 for i in data:
                     tmp_res.append({'id': i[0], 'name': i[1], 'content': i[2], 'link': i[3]})
