@@ -214,8 +214,12 @@ form button:hover {
         flex-direction: column;
     }
 
+    .main {
+    background-image: none;
+    }
+
     .content-text {
-        background-image: url(../img/tmp/16.png);
+        background-image: url(../img/tmp/10.png);
         background-size: 100% 100%;
     }
 
