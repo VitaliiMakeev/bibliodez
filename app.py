@@ -166,8 +166,8 @@ def send_messag():
         else:
             if len(name) != 0 and len(email) != 0 and len(messag) != 0:
                 if check_email(email, giv_messag()):
-                    if len(messag) > 198:
-                        req = f'Слишком много текста - {len(messag)} символов! НЕ БОЛЕЕ 200!'
+                    if len(messag) > 1000:
+                        req = f'Слишком много текста - {len(messag)} символов! НЕ БОЛЕЕ 1000!'
                         return render_template('index.html', req1=req)
                     else:
                         cur2.execute(

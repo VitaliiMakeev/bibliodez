@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Roboto&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
 }
 body {
+    font-family: 'Lato', sans-serif;
     scroll-behavior: smooth;
-    /*background: linear-gradient(rgba(96, 96, 202, 0.7), white)*/
-    background-image: url(../img/fon.jpg);
-    background-size: cover;
+    background: linear-gradient(rgba(96, 96, 202, 0.7), white)
+    /*background-image: url(../img/fon.jpg);
+    background-size: cover;*/
 }
 
 img {
@@ -76,6 +80,12 @@ button {
     align-items: center;
 }
 
+
+.main {
+    background-image: url(../img/tmp/10.png);
+}
+
+
 form button:hover {
     background-color: rgb(52, 77, 77);
     color: #dfd3d3;
@@ -95,20 +105,12 @@ form button:hover {
 */
 .content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 5px;
-
 }
 
 .right-text {
     text-align: right;
-}
-
-.content img {
-display: none;
-    max-width: 600px;
-    /*height: 100%;*/
 }
 
 .content-text h1{
@@ -212,8 +214,12 @@ display: none;
         flex-direction: column;
     }
 
+    .main {
+    background-image: none;
+    }
+
     .content-text {
-        background-image: url(../img/tmp/16.png);
+        background-image: url(../img/tmp/10.png);
         background-size: 100% 100%;
     }
 
