@@ -32,6 +32,10 @@ button {
     cursor: pointer;
 }
 
+.no-see {
+    display: none;
+}
+
 .header {
     padding: 40px;
     margin-bottom: 60px;
@@ -51,8 +55,18 @@ button {
     margin-bottom: 10px;
 }
 
+.headering a {
+    color: black;
+    font-size: 20px;
+}
+
+.headering a h1:hover {
+    color: #dfd3d3;
+}
+
 .logo-comp img {
     max-height: 60px;
+    margin-bottom: 10px;
 }
 
 .logo-comp img:hover {
@@ -69,11 +83,6 @@ button {
 .navigation img {
     width: 26px;
     height: 27px;
-}
-
-.headering a {
-    color: white;
-    font-size: 20px;
 }
 
 .hr-shadow {
@@ -94,11 +103,12 @@ button {
     align-items: center;
 }
 
-/*
+
 .main {
-    background-image: url(../img/tmp/10.png);
+    /*background-image: url(../img/tmp/10.png);*/
+    min-height: 80vh;
 }
-*/
+
 
 form button:hover {
     background-color: rgb(52, 77, 77);
@@ -161,6 +171,10 @@ form button:hover {
     
 }
 
+.callback textarea {
+    font-size: 30px;
+}
+
 .mess-to-user {
     text-align: center;
     margin-top: 20px;
@@ -199,8 +213,13 @@ form button:hover {
 }
 
 .footer {
-    padding: 40px 0;
+    padding: 10px 0;
     background: linear-gradient(white, rgb(102, 94, 94));
+    /*position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;*/
 }
 
 .footer p {
@@ -278,6 +297,11 @@ form button:hover {
     .callback {
         min-width: 320px;
     }
+
+    .form input {
+    min-height: 30px;
+    font-size: 20px;
+}
 
 
 }

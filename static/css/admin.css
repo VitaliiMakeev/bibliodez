@@ -51,6 +51,7 @@ img {
 
 .logo-comp img {
     max-height: 60px;
+    margin-bottom: 10px;
 }
 
 .logo-comp img:hover {
@@ -154,7 +155,7 @@ form button {
 }
 
 .main {
-
+    min-height: 80vh;
 }
 
 .mine-section {
@@ -270,11 +271,6 @@ form button {
     margin-bottom: 15px;
 }
 
-.masseg {
-    width: 100%;
-    min-height: 100px;
-}
-
 .form-del-mess {
     float: right;
 }
@@ -291,7 +287,7 @@ form button {
 }
 
 .footer {
-    padding: 40px 0;
+    padding: 10px 0;
     background: linear-gradient(white, rgb(102, 94, 94));
 }
 
@@ -370,11 +366,6 @@ form button {
     .navigation {
         justify-content: space-between;
         min-width: 100%;
-    }
-
-    .masseg {
-        min-width: 250px;
-        min-height: 100px;
     }
 
     .callback {
