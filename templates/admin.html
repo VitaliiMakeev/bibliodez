@@ -9,7 +9,7 @@
   <body>
     <header class="header">
       <section class="headering conteiner">
-        <a class="logo-comp" href="#"><img src="#" alt="логотип компании" /></a>
+        <a class="logo-comp" href="/"><img src="../static/img/logo.png" alt="логотип компании" /></a>
         <nav class="navigation">
           <a href="/"
             ><svg
@@ -85,7 +85,6 @@
             <form method="POST" action="/delete/" class="content1__result">
               <div class="content__result_tmp">
                 <h1>{{item.name}}</h1>
-                <p>{{item.content}}</p>
                 <a href="{{item.link}}">Еще больше информации тут</a>
               </div>
               <button name="delete" value="{{ item.id }}" type="submit" class="id antiseptic">
@@ -138,14 +137,6 @@
               type="text"
               placeholder="Ссылка на документацию"
             />
-            <textarea
-              name="massag"
-              class="input masseg"
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="Краткое описание (не более 1000 символов)"
-            ></textarea>
             <div class="btn-callback">
               <button type="submit">Сохранить</button>
               <button type="reset">Очистить</button>
@@ -173,7 +164,8 @@
     </main>
     <footer class="footer">
       <section class="footering conteiner">
-        <p>Тут можно еще что-нибудь написать</p>
+        <p></p>
+        <p>&copy; БиблиоДез</p>
       </section>
     </footer>
   </body>

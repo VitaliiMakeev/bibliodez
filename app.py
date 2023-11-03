@@ -31,7 +31,7 @@ def found():
             cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 100;")
             data = cur.fetchall()
             for i in data:
-                res_list.append({'name': i[1], 'content': i[2], 'link': i[3]})
+                res_list.append({'name': i[1], 'link': i[2]})
             if len(res_list) != 0:
                 return render_template('search.html', data=res_list)
             else:
@@ -41,20 +41,20 @@ def found():
             return render_template('search.html', noSearch=no_found)
 
 
-def giv_messag():
-    global con
-    messag_res = []
-    cur1 = con.cursor()
-    cur1.execute('SELECT id, messag, sender_name, sender_email FROM messages ORDER BY id DESC LIMIT 10;')
-    data_mess = cur1.fetchall()
-    if len(data_mess) != 0:
-        for j in data_mess:
-            messag_res.append({'id': j[0], 'messag': j[1], 'name': j[2], 'email': j[3]})
-    cur1.close()
-    return messag_res
-
-
-res_mess = giv_messag()
+# def giv_messag():
+#     global con
+#     messag_res = []
+#     cur1 = con.cursor()
+#     cur1.execute('SELECT id, messag, sender_name, sender_email FROM messages ORDER BY id DESC LIMIT 10;')
+#     data_mess = cur1.fetchall()
+#     if len(data_mess) != 0:
+#         for j in data_mess:
+#             messag_res.append({'id': j[0], 'messag': j[1], 'name': j[2], 'email': j[3]})
+#     cur1.close()
+#     return messag_res
+#
+#
+# res_mess = giv_messag()
 
 
 
@@ -74,35 +74,34 @@ def found_adm():
                 cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 100;")
                 data = cur.fetchall()
                 for i in data:
-                    tmp_res.append({'id': i[0], 'name': i[1], 'content': i[2], 'link': i[3]})
+                    tmp_res.append({'id': i[0], 'name': i[1], 'link': i[2]})
                 if len(tmp_res) != 0:
                     res = tmp_res
-                    return render_template('admin.html', data=tmp_res, messag=giv_messag())
+                    return render_template('admin.html', data=tmp_res)
                 else:
                     res = tmp_res
-                    return render_template('admin.html', noSearch=no_found, messag=giv_messag())
+                    return render_template('admin.html', noSearch=no_found)
             else:
                 res = tmp_res
                 no_found = 'По вашему запросу ничего не найдено.'
-                return render_template('admin.html', noSearch=no_found, messag=giv_messag())
+                return render_template('admin.html', noSearch=no_found)
     elif request.method == "POST":
         req = 'Не все поля заполнены.'
         name = request.form.get('name')
         link = request.form.get('link')
-        messag = request.form.get('massag')
         cur3 = con.cursor()
-        if name is None and link is None and messag is None:
+        if name is None and link is None:
             return render_template('admin.html')
         else:
-            if len(name) != 0 and len(link) != 0 and len(messag) != 0:
+            if len(name) != 0 and len(link) != 0:
                 cur3.execute(
-                    f"INSERT INTO antiseptik(nameA, link, descriptionA) VALUES('{name}', '{link}', '{messag}');")
+                    f"INSERT INTO antiseptik(nameA, link) VALUES('{name}', '{link}');")
                 cur3.close()
                 con.commit()
                 req = 'Данные сохранены!'
-                return render_template('admin.html', admin_req=req, messag=giv_messag())
+                return render_template('admin.html', admin_req=req)
             else:
-                return render_template('admin.html', admin_req=req, messag=giv_messag())
+                return render_template('admin.html', admin_req=req)
 
 
 def hash_password(password, salt):
@@ -127,7 +126,7 @@ def login_try():
             if len(data) != 0:
                 if len(login) != 0 and len(passw) != 0:
                     if data[0][1] == hash_password(passw, data[0][0]):
-                        return render_template('admin.html', messag=giv_messag())
+                        return render_template('admin.html')
                     else:
                         return render_template('autorysit.html', noEnter=no_ent)
                 else:
@@ -143,7 +142,6 @@ def login_try():
 def check_email(email, list_mess):
     count = 0
     for k in list_mess:
-        print(count, k.get('email'))
         if count < 3:
             if k.get('email') == email:
                 count += 1
@@ -154,35 +152,35 @@ def check_email(email, list_mess):
 
 @app.route('/', methods=["GET", "POST"])
 def send_messag():
-    if request.method == "POST":
-        global con
-        req = 'Не все поля заполнены.'
-        name = request.form.get('name')
-        email = request.form.get('email')
-        messag = request.form.get('massag')
-        cur2 = con.cursor()
-        if name is None and email is None and messag is None:
-            return render_template('index.html')
-        else:
-            if len(name) != 0 and len(email) != 0 and len(messag) != 0:
-                if check_email(email, giv_messag()):
-                    if len(messag) > 1000:
-                        req = f'Слишком много текста - {len(messag)} символов! НЕ БОЛЕЕ 1000!'
-                        return render_template('index.html', req1=req)
-                    else:
-                        cur2.execute(
-                            f"INSERT INTO messages(sender_name, sender_email, messag) VALUES('{name}', '{email}', '{messag}');")
-                        cur2.close()
-                        con.commit()
-                        req = 'Сообщение отправлено!'
-                        return render_template('index.html', req1=req)
-                else:
-                    req = 'Специалист с вами свяжется, ожидайте. Сообщение заблокированно.'
-                    return render_template('index.html', req1=req)
-            else:
-                return render_template('index.html', req1=req)
-    else:
-        return render_template('index.html')
+    # if request.method == "POST":
+    #     global con
+    #     req = 'Не все поля заполнены.'
+    #     name = request.form.get('name')
+    #     email = request.form.get('email')
+    #     messag = request.form.get('massag')
+    #     cur2 = con.cursor()
+    #     if name is None and email is None and messag is None:
+    #         return render_template('index.html')
+    #     else:
+    #         if len(name) != 0 and len(email) != 0 and len(messag) != 0:
+    #             if check_email(email, giv_messag()):
+    #                 if len(messag) > 1000:
+    #                     req = f'Слишком много текста - {len(messag)} символов! НЕ БОЛЕЕ 1000!'
+    #                     return render_template('index.html', req1=req)
+    #                 else:
+    #                     cur2.execute(
+    #                         f"INSERT INTO messages(sender_name, sender_email, messag) VALUES('{name}', '{email}', '{messag}');")
+    #                     cur2.close()
+    #                     con.commit()
+    #                     req = 'Сообщение отправлено!'
+    #                     return render_template('index.html', req1=req)
+    #             else:
+    #                 req = 'Специалист с вами свяжется, ожидайте. Сообщение заблокированно.'
+    #                 return render_template('index.html', req1=req)
+    #         else:
+    #             return render_template('index.html', req1=req)
+    # else:
+    return render_template('index.html')
 
 
 @app.route('/delete/', methods=["POST"])
@@ -199,7 +197,7 @@ def delete():
     cur3.close()
     con.commit()
     messag_to_admin = f'Позиция {tmp_name} удалена.'
-    return render_template('admin.html', data=res, delete_item=messag_to_admin, messag=giv_messag())
+    return render_template('admin.html', data=res, delete_item=messag_to_admin)
 
 
 @app.route('/del_messag/', methods=["POST"])
