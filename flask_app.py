@@ -4,63 +4,76 @@ from flask import Flask, render_template, url_for, request
 import pymysql
 
 
+
+
 app = Flask(__name__)
 
 host = 'localhost'
 user = 'root'
 password = 'Zaza_2023!'
-db = 'test123'
-try:
-    con = pymysql.connect(host=host, user=user, password=password, db=db, use_unicode=True, charset='utf8')
-except Exception as e:
-    print(e)
+db = 'bibliodez'
 res = []
 
 
-@app.route('/search', methods=["GET"])
+@app.route('/search/', methods=["GET"])
 def found():
-    global con
+    con = pymysql.connect(host=host, user=user, password=password, db=db, use_unicode=True, charset='utf8')
     no_found = 'По вашему запросу ничего не найдено.'
     element = request.args.get('name')
     res_list = []
     cur = con.cursor()
     if element is None:
+        cur.close()
         return render_template('search.html')
     else:
         if len(element) != 0:
-            cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 100;")
+            cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 150;")
             data = cur.fetchall()
             for i in data:
                 res_list.append({'name': i[1], 'link': i[2]})
             if len(res_list) != 0:
+                cur.close()
                 return render_template('search.html', data=res_list)
             else:
+                cur.close()
                 return render_template('search.html', noSearch=no_found)
         else:
-            no_found = 'По вашему запросу ничего не найдено.'
+            cur.close()
             return render_template('search.html', noSearch=no_found)
 
 
-# def giv_messag():
-#     global con
-#     messag_res = []
-#     cur1 = con.cursor()
-#     cur1.execute('SELECT id, messag, sender_name, sender_email FROM messages ORDER BY id DESC LIMIT 10;')
-#     data_mess = cur1.fetchall()
-#     if len(data_mess) != 0:
-#         for j in data_mess:
-#             messag_res.append({'id': j[0], 'messag': j[1], 'name': j[2], 'email': j[3]})
-#     cur1.close()
-#     return messag_res
-#
-#
-# res_mess = giv_messag()
-
+@app.route('/found/', methods=["GET"])
+def found_index():
+    con = pymysql.connect(host=host, user=user, password=password, db=db, use_unicode=True, charset='utf8')
+    no_found = 'По вашему запросу ничего не найдено.'
+    element = request.args.get('name')
+    res_list = []
+    cur = con.cursor()
+    if element is None:
+        cur.close()
+        return render_template('index.html')
+    else:
+        if len(element) != 0:
+            cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 150;")
+            data = cur.fetchall()
+            for i in data:
+                res_list.append({'name': i[1], 'link': i[2]})
+            if len(res_list) != 0:
+                cur.close()
+                return render_template('index.html', data=res_list)
+            else:
+                cur.close()
+                return render_template('index.html', noSearch=no_found)
+        else:
+            cur.close()
+            no_found = 'По вашему запросу ничего не найдено.'
+            return render_template('index.html', noSearch=no_found)
 
 
 @app.route('/admin', methods=["GET", "POST"])
 def found_adm():
-    global con, res_mess, res
+    global res
+    con = pymysql.connect(host=host, user=user, password=password, db=db, use_unicode=True, charset='utf8')
     if request.method == "GET":
         no_found = 'По вашему запросу ничего не найдено.'
         element = request.args.get('name')
@@ -71,18 +84,21 @@ def found_adm():
             return render_template('admin.html')
         else:
             if len(element) != 0:
-                cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 100;")
+                cur.execute(f"SELECT * FROM antiseptik WHERE nameA Like '%{element}%' LIMIT 150;")
                 data = cur.fetchall()
                 for i in data:
                     tmp_res.append({'id': i[0], 'name': i[1], 'link': i[2]})
                 if len(tmp_res) != 0:
                     res = tmp_res
+                    cur.close()
                     return render_template('admin.html', data=tmp_res)
                 else:
                     res = tmp_res
+                    cur.close()
                     return render_template('admin.html', noSearch=no_found)
             else:
                 res = tmp_res
+                cur.close()
                 no_found = 'По вашему запросу ничего не найдено.'
                 return render_template('admin.html', noSearch=no_found)
     elif request.method == "POST":
@@ -101,6 +117,7 @@ def found_adm():
                 req = 'Данные сохранены!'
                 return render_template('admin.html', admin_req=req)
             else:
+                cur3.close()
                 return render_template('admin.html', admin_req=req)
 
 
@@ -111,14 +128,14 @@ def hash_password(password, salt):
 
 @app.route('/autorysit', methods=["GET", "POST"])
 def login_try():
+    con = pymysql.connect(host=host, user=user, password=password, db=db, use_unicode=True, charset='utf8')
     if request.method == "POST":
-        global con, res_mess
         no_ent = 'Неверный пароль, попробуйте еще раз.'
         login = request.form.get('login')
         passw = request.form.get('passw')
 
         cur = con.cursor()
-        cur.execute(f"SELECT lastname, passw FROM users WHERE email = '{login}';")
+        cur.execute(f"SELECT firstname, passw FROM users WHERE email = '{login}';")
         data = cur.fetchall()
         if login is None and passw is None:
             return render_template('autorysit.html')
@@ -126,6 +143,7 @@ def login_try():
             if len(data) != 0:
                 if len(login) != 0 and len(passw) != 0:
                     if data[0][1] == hash_password(passw, data[0][0]):
+                        cur.close()
                         return render_template('admin.html')
                     else:
                         return render_template('autorysit.html', noEnter=no_ent)
@@ -152,40 +170,13 @@ def check_email(email, list_mess):
 
 @app.route('/', methods=["GET", "POST"])
 def send_messag():
-    # if request.method == "POST":
-    #     global con
-    #     req = 'Не все поля заполнены.'
-    #     name = request.form.get('name')
-    #     email = request.form.get('email')
-    #     messag = request.form.get('massag')
-    #     cur2 = con.cursor()
-    #     if name is None and email is None and messag is None:
-    #         return render_template('index.html')
-    #     else:
-    #         if len(name) != 0 and len(email) != 0 and len(messag) != 0:
-    #             if check_email(email, giv_messag()):
-    #                 if len(messag) > 1000:
-    #                     req = f'Слишком много текста - {len(messag)} символов! НЕ БОЛЕЕ 1000!'
-    #                     return render_template('index.html', req1=req)
-    #                 else:
-    #                     cur2.execute(
-    #                         f"INSERT INTO messages(sender_name, sender_email, messag) VALUES('{name}', '{email}', '{messag}');")
-    #                     cur2.close()
-    #                     con.commit()
-    #                     req = 'Сообщение отправлено!'
-    #                     return render_template('index.html', req1=req)
-    #             else:
-    #                 req = 'Специалист с вами свяжется, ожидайте. Сообщение заблокированно.'
-    #                 return render_template('index.html', req1=req)
-    #         else:
-    #             return render_template('index.html', req1=req)
-    # else:
     return render_template('index.html')
 
 
 @app.route('/delete/', methods=["POST"])
 def delete():
-    global res, con
+    global res
+    con = pymysql.connect(host=host, user=user, password=password, db=db, use_unicode=True, charset='utf8')
     cur3 = con.cursor()
     id_item = request.form.get('delete')
     tmp_name = ''
@@ -200,24 +191,24 @@ def delete():
     return render_template('admin.html', data=res, delete_item=messag_to_admin)
 
 
-@app.route('/del_messag/', methods=["POST"])
-def delete_messag():
-    global res, con
-    tmp_list = giv_messag()
-    cur4 = con.cursor()
-    id_item = request.form.get('delete_messag')
-    email_send = ''
-    for i in tmp_list:
-        if str(i.get('id')) == id_item:
-            email_send = i.get('email')
-            tmp_list.remove(i)
-    cur4.execute(f"DELETE FROM messages WHERE id = {id_item};")
-    cur4.close()
-    con.commit()
-    messag_to_admin = f'Сообщение от {email_send} - удалено.'
-    return render_template('admin.html', data=res, admin_del_mess=messag_to_admin, messag=giv_messag())
+@app.route('/giv/', methods=["POST"])
+def giv():
+    no_found = 'По вашему запросу ничего не найдено!'
+    item = request.form.get('giv')
+    con = pymysql.connect(host=host, user=user, password=password, db=db, use_unicode=True, charset='utf8')
+    cur5 = con.cursor()
+    tmp_res = []
+    cur5.execute(f"SELECT * FROM antiseptik WHERE nameA Like '{item}%' LIMIT 150;")
+    data = cur5.fetchall()
+    for i in data:
+        tmp_res.append({'name': i[1], 'link': i[2]})
+    if len(tmp_res) != 0:
+        cur5.close()
+        return render_template('search.html', data=tmp_res)
+    else:
+        cur5.close()
+        return render_template('search.html', noSearch=no_found)
 
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)

@@ -4,16 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/search.css')}}" />
+<!--    <link rel="stylesheet" href="./css/search.css" />-->
     <title>Search</title>
   </head>
   <body>
-  <h1 class="no-see">Библиодез</h1>
-  <meta name="description" content="Документация на антисептик">
-  <meta name="description" content="Документация на дезинфецирующие средства">
-  <meta name="description" content="Полная информация на все дезинфецирующие средства и антисептики">
+    <h1 class="no-see">Библиодез</h1>
+    <meta name="description" content="Документация на антисептик" />
+    <meta
+      name="description"
+      content="Документация на дезинфецирующие средства"
+    />
+    <meta
+      name="description"
+      content="Полная информация на все дезинфецирующие средства и антисептики"
+    />
     <header class="header">
       <section class="headering conteiner">
-        <a class="logo-comp" href="/"><img src="../static/img/logo.png" alt="логотип компании" /></a>
+        <a class="logo-comp" href="/"
+          ><img src="../static/img/logo.png" alt="логотип компании"
+        /></a>
         <nav class="navigation">
           <a href="/autorysit">
             <svg width="26px" height="27px" viewBox="0 0 48 48">
@@ -29,33 +38,35 @@
               </g>
             </svg>
           </a>
-          <a href="/"> <h1>Главная</h1>
-<!--            <svg-->
-<!--              fill="#000000"-->
-<!--              height="27px"-->
-<!--              width="26px"-->
-<!--              version="1.1"-->
-<!--              id="Capa_1"-->
-<!--              viewBox="0 0 360 360"-->
-<!--              xml:space="preserve"-->
-<!--            >-->
-<!--              <path-->
-<!--                d="M352.163,163.115L198.919,9.871c-10.449-10.449-27.389-10.449-37.838,0L7.837,163.115c-7.652,7.652-9.94,19.16-5.8,29.158-->
-<!--           c4.142,9.998,13.898,16.516,24.719,16.516h20.762v114.574c0,19.112,15.493,34.603,34.603,34.603h195.758-->
-<!--           c19.11,0,34.603-15.492,34.603-34.603V208.789h20.762c10.821,0,20.578-6.519,24.719-16.516-->
-<!--           C362.103,182.275,359.815,170.767,352.163,163.115z M220.431,307.785h-80.862v-45.583c0-22.33,18.102-40.431,40.431-40.431-->
-<!--           s40.431,18.1,40.431,40.431V307.785z"-->
-<!--              /></svg>-->
+          <a href="/">
+            <h1>Главная</h1>
+            <!--            <svg-->
+            <!--              fill="#000000"-->
+            <!--              height="27px"-->
+            <!--              width="26px"-->
+            <!--              version="1.1"-->
+            <!--              id="Capa_1"-->
+            <!--              viewBox="0 0 360 360"-->
+            <!--              xml:space="preserve"-->
+            <!--            >-->
+            <!--              <path-->
+            <!--                d="M352.163,163.115L198.919,9.871c-10.449-10.449-27.389-10.449-37.838,0L7.837,163.115c-7.652,7.652-9.94,19.16-5.8,29.158-->
+            <!--           c4.142,9.998,13.898,16.516,24.719,16.516h20.762v114.574c0,19.112,15.493,34.603,34.603,34.603h195.758-->
+            <!--           c19.11,0,34.603-15.492,34.603-34.603V208.789h20.762c10.821,0,20.578-6.519,24.719-16.516-->
+            <!--           C362.103,182.275,359.815,170.767,352.163,163.115z M220.431,307.785h-80.862v-45.583c0-22.33,18.102-40.431,40.431-40.431-->
+            <!--           s40.431,18.1,40.431,40.431V307.785z"-->
+            <!--              /></svg>-->
           </a>
         </nav>
       </section>
       <hr class="hr-shadow" />
     </header>
     <main class="main">
-      <h1 class="name-page">Библиотека документации антисептиков и дезсредств</h1>
+      <h1 class="name-page">
+        Библиотека документации антисептиков и дезсредств
+      </h1>
       <section class="search conteiner">
-        <h1>Поиск</h1>
-        <form class="form-search" metod="GET" action="{{ url_for('found')}}" >
+        <form class="form-search" metod="GET" action="/search/">
           <input
             id="search-input"
             type="text"
@@ -65,14 +76,87 @@
           <button id="found-click" class="faund" type="submit">Найти</button>
         </form>
       </section>
+      <section class="chose conteiner">
+        <form class="rus alf" method="POST" action="/giv/">
+          <button name="giv" value="А" type="submit" >&nbspA&nbsp</button>
+          <button name="giv" value="Б" type="submit" >&nbspБ&nbsp</button>
+          <button name="giv" value="В" type="submit" >&nbspВ&nbsp</button>
+          <button name="giv" value="Г" type="submit" >&nbspГ&nbsp</button>
+          <button name="giv" value="Д" type="submit" >&nbspД&nbsp</button>
+          <button name="giv" value="Е" type="submit" >&nbspЕ&nbsp</button>
+          <button name="giv" value="Ё" type="submit" >&nbspЁ&nbsp</button>
+          <button name="giv" value="Ж" type="submit" >&nbspЖ&nbsp</button>
+          <button name="giv" value="З" type="submit" >&nbspЗ&nbsp</button>
+          <button name="giv" value="И" type="submit" >&nbspИ&nbsp</button>
+          <button name="giv" value="Й" type="submit" >&nbspЙ&nbsp</button>
+          <button name="giv" value="К" type="submit" >&nbspК&nbsp</button>
+          <button name="giv" value="Л" type="submit" >&nbspЛ&nbsp</button>
+          <button name="giv" value="М" type="submit" >&nbspМ&nbsp</button>
+          <button name="giv" value="Н" type="submit" >&nbspН&nbsp</button>
+          <button name="giv" value="О" type="submit" >&nbspО&nbsp</button>
+          <button name="giv" value="П" type="submit" >&nbspП&nbsp</button>
+          <button name="giv" value="Р" type="submit" >&nbspР&nbsp</button>
+          <button name="giv" value="С" type="submit" >&nbspС&nbsp</button>
+          <button name="giv" value="Т" type="submit" >&nbspТ&nbsp</button>
+          <button name="giv" value="У" type="submit" >&nbspУ&nbsp</button>
+          <button name="giv" value="Ф" type="submit" >&nbspФ&nbsp</button>
+          <button name="giv" value="Х" type="submit" >&nbspХ&nbsp</button>
+          <button name="giv" value="Ц" type="submit" >&nbspЦ&nbsp</button>
+          <button name="giv" value="Ч" type="submit" >&nbspЧ&nbsp</button>
+          <button name="giv" value="Ш" type="submit" >&nbspШ&nbsp</button>
+          <button name="giv" value="Щ" type="submit" >&nbspЩ&nbsp</button>
+          <button name="giv" value="Э" type="submit" >&nbspЭ&nbsp</button>
+          <button name="giv" value="Ю" type="submit" >&nbspЮ&nbsp</button>
+          <button name="giv" value="Я" type="submit" >&nbspЯ&nbsp</button>
+        </form>
+        <form class="eng alf" method="POST" action="/giv/">
+          <button name="giv" value="A" type="submit" >&nbspA&nbsp</button>
+          <button name="giv" value="B" type="submit" >&nbspB&nbsp</button>
+          <button name="giv" value="C" type="submit" >&nbspC&nbsp</button>
+          <button name="giv" value="D" type="submit" >&nbspD&nbsp</button>
+          <button name="giv" value="E" type="submit" >&nbspE&nbsp</button>
+          <button name="giv" value="F" type="submit" >&nbspF&nbsp</button>
+          <button name="giv" value="G" type="submit" >&nbspG&nbsp</button>
+          <button name="giv" value="H" type="submit" >&nbspH&nbsp</button>
+          <button name="giv" value="I" type="submit" >&nbspI&nbsp</button>
+          <button name="giv" value="J" type="submit" >&nbspJ&nbsp</button>
+          <button name="giv" value="K" type="submit" >&nbspK&nbsp</button>
+          <button name="giv" value="L" type="submit" >&nbspL&nbsp</button>
+          <button name="giv" value="M" type="submit" >&nbspM&nbsp</button>
+          <button name="giv" value="N" type="submit" >&nbspN&nbsp</button>
+          <button name="giv" value="O" type="submit" >&nbspO&nbsp</button>
+          <button name="giv" value="P" type="submit" >&nbspP&nbsp</button>
+          <button name="giv" value="Q" type="submit" >&nbspQ&nbsp</button>
+          <button name="giv" value="R" type="submit" >&nbspR&nbsp</button>
+          <button name="giv" value="S" type="submit" >&nbspS&nbsp</button>
+          <button name="giv" value="T" type="submit" >&nbspT&nbsp</button>
+          <button name="giv" value="U" type="submit" >&nbspU&nbsp</button>
+          <button name="giv" value="V" type="submit" >&nbspV&nbsp</button>
+          <button name="giv" value="W" type="submit" >&nbspW&nbsp</button>
+          <button name="giv" value="X" type="submit" >&nbspX&nbsp</button>
+          <button name="giv" value="Y" type="submit" >&nbspY&nbsp</button>
+          <button name="giv" value="Z" type="submit" >&nbspZ&nbsp</button>
+        </form>
+        <form class="num alf" method="POST" action="/giv/" >
+          <button name="giv" value="0" type="submit" >&nbsp0&nbsp</button>
+          <button name="giv" value="1" type="submit" >&nbsp1&nbsp</button>
+          <button name="giv" value="2" type="submit" >&nbsp2&nbsp</button>
+          <button name="giv" value="3" type="submit" >&nbsp3&nbsp</button>
+          <button name="giv" value="4" type="submit" >&nbsp4&nbsp</button>
+          <button name="giv" value="5" type="submit" >&nbsp5&nbsp</button>
+          <button name="giv" value="6" type="submit" >&nbsp6&nbsp</button>
+          <button name="giv" value="7" type="submit" >&nbsp7&nbsp</button>
+          <button name="giv" value="8" type="submit" >&nbsp8&nbsp</button>
+          <button name="giv" value="9" type="submit" >&nbsp9&nbsp</button>
+        </form>
+      </section>
       <section class="mine-section conteiner">
         <!-- <div class="reclama-left"><img src="#" alt="Реклама" /></div> -->
         <div id="content1" class="content">
           {% for item in data %}
-            <h1>{{item.name}}</h1>
-            <p>{{item.content}}</p>
-            <a href="{{item.link}}">Еще больше информации тут</a>
-            <hr class="hr-shadow dop" />
+          <h1>{{item.name}}</h1>
+          <a href="{{item.link}}">Еще больше информации тут</a>
+          <hr class="hr-shadow dop" />
           {% endfor %}
           <h1>{{noSearch}}</h1>
         </div>
@@ -85,15 +169,14 @@
     </main>
     <footer class="footer">
       <section class="footering conteiner">
-        <p>
-        </p>
+        <p></p>
         <p>&copy; БиблиоДез</p>
-<!--        <div class="logo">-->
-<!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
-<!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
-<!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
-<!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
-<!--        </div>-->
+        <!--        <div class="logo">-->
+        <!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
+        <!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
+        <!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
+        <!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
+        <!--        </div>-->
       </section>
     </footer>
     <script src="./found.js"></script>

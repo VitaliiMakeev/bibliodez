@@ -1,4 +1,4 @@
 .idea
 .idea/*
 .idea/*/*
-tmp.py
+__pycache__/

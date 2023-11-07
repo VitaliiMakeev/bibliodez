@@ -38,7 +38,7 @@ button {
 
 .header {
     padding: 40px;
-    margin-bottom: 60px;
+
 }
 
 .headering {
@@ -92,14 +92,21 @@ button {
 	box-shadow: 0 10px 10px -10px #777373 inset;
 }
 
-.content__title {
-    font-size: 40px;
+.dop {
+    width: 80vw;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
+
+#content1 a:hover {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#content1
 
 .mine-section {
     margin-bottom: 95px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -127,29 +134,64 @@ form button:hover {
     border: 2px solid #1d1818;
 }
 */
+
 .content {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.right-text {
+    text-align: right;
+    font-size: 25px;
+}
+
+.content-text {
+    width: 80vw;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.content__title {
+    font-size: 25px;
+    text-align: center;
+}
+
+.search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
     justify-content: center;
     align-items: center;
 }
 
-.right-text {
-    text-align: right;
-}
-
-.content-text h1{
-    width: 80vw;
-    margin-bottom: 20px;
-}
-
-.content p {
-    max-width: 500px;
-    margin-bottom: 50px;
-}
-
-.main-section-down {
+form {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-search input {
+    width: 60vw;
+    min-height: 40px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+form button {
+    min-height: 25px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 25px;
+    box-shadow: none;
+}
+
+input::placeholder {
+    text-align: center;
+    font-size: 25px;
 }
 /*
 .reclama-left-down {
@@ -164,43 +206,7 @@ form button:hover {
     border: 2px solid #1d1818;
 }
 */
-.callback {
-    min-width: 800px;
-    /*display: flex;
-    justify-content: space-around;*/
-    
-}
 
-.callback textarea {
-    font-size: 30px;
-}
-
-.mess-to-user {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-
-.form {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 10px;
-    border: 2px solid black;
-    border-radius: 15px;
-    box-shadow: 3px 3px 5px black
-}
-
-.form input {
-    width: 100%;
-    min-height: 40px;
-    border-radius: 10px;
-    font-size: 30px;
-}
-
-.input {
-    margin-bottom: 15px;
-}
 
 .masseg {
     width: 100%;
@@ -238,8 +244,16 @@ form button:hover {
         max-width: 768px;
     }
 
-    .content img {
-        display: none;
+    .content__title {
+        font-size: 20px;
+    }
+
+    .right-text {
+        font-size: 20px;
+    }
+
+    input::placeholder {
+        font-size: 18px;
     }
 
     .content {
@@ -250,12 +264,7 @@ form button:hover {
     .main {
     background-image: none;
     }
-/*
-    .content-text {
-        background-image: url(../img/tmp/10.png);
-        background-size: 100% 100%;
-    }
-*/
+
     .callback {
         min-width: 768px;
     }
@@ -263,12 +272,38 @@ form button:hover {
 
 @media (min-width: 320px) and (max-width: 767px) {
     .conteiner {
-        min-width: 100wh;
-        margin: 0 20px;
+        min-width: 90vw;
     }
 
-    .content img {
-        display: none;
+    .header {
+        padding: 0;
+    }
+
+    .content__title {
+        font-size: 15px;
+    }
+
+    .right-text {
+        font-size: 15px;
+    }
+
+    input::placeholder {
+        font-size: 10px;
+    }
+
+    form {
+        gap: 0;
+    }
+    
+    .form-search input {
+        min-height: 20px;
+        font-size: 20px;
+    }
+    
+    form button {
+        min-height: 15px;
+        border-radius: 10px;
+        font-size: 10px;
     }
 
     .headering {
@@ -276,26 +311,11 @@ form button:hover {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 15px;
-    }
-
-    .header {
-        padding: 20px;
-        margin-bottom: 30px;
     }
 
     .navigation {
         justify-content: space-between;
         min-width: 100%;
-    }
-
-    .masseg {
-        min-width: 250px;
-        min-height: 100px;
-    }
-
-    .callback {
-        min-width: 320px;
     }
 
     .form input {

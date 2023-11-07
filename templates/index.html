@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
-    <title>Главная страница</title>
+<!--    <link rel="stylesheet" href="./css/style.css" />-->
+    <title>Библиодез</title>
   </head>
   <body>
-  <h1 class="no-see">Библиодез</h1>
+    <h1 class="no-see">Библиодез</h1>
     <header class="header">
       <section class="headering conteiner">
-        <a class="logo-comp" href="/"><img src="../static/img/logo.png" alt="логотип компании" /></a>
+        <a class="logo-comp" href="/"
+          ><img src="../static/img/logo.png" alt="логотип компании"
+        /></a>
         <nav class="navigation">
           <a href="/autorysit">
             <svg width="26px" height="27px" viewBox="0 0 48 48">
@@ -26,95 +29,56 @@
               </g>
             </svg>
           </a>
-<!--          <a href="#callback"-->
-<!--            ><svg-->
-<!--              fill="#000000"-->
-<!--              version="1.1"-->
-<!--              baseProfile="tiny"-->
-<!--              id="Layer_1"-->
-<!--              width="26px"-->
-<!--              height="27px"-->
-<!--              viewBox="0 0 42 42"-->
-<!--              xml:space="preserve"-->
-<!--            >-->
-<!--              <path-->
-<!--                d="M6.5,25.5v4c0.016,2.812,1.344,2.375,2.328,1.531L14.5,25.91v2.59c0,2.43,0.56,3,3,3h9c0,0,5.209,6.125,5.25,6.084-->
-<!--         c0.75,0.916,2.781,0.604,2.75-1.084v-5h3c2.45,0,3-0.609,3-3v-15c0-2.4-0.59-3-3-3h-10v-2c0-2.47-0.46-3-3-3h-21c-2.36,0-3,0.51-3,3-->
-<!--         v13c0,2.439,0.55,4,3,4H6.5z M31.5,28.5v4.721l-4-4.721h-9c-0.75,0-1-0.27-1-1v-13c0-0.67,0.31-1,1-1h18c0.689,0,1,0.37,1,0.94V27.5-->
-<!--         c0,0.721-0.359,1-1,1H31.5z"-->
-<!--              /></svg-->
-<!--          ></a>-->
-          <a href="/search"> <h1>Каталог</h1>
-<!--            <svg-->
-<!--              fill="#000000"-->
-<!--              width="26px"-->
-<!--              height="27px"-->
-<!--              viewBox="0 0 32 32"-->
-<!--              version="1.1"-->
-<!--            >-->
-<!--              <path-->
-<!--                d="M29.156 29.961l-0.709 0.709c-0.785 0.784-2.055 0.784-2.838 0l-5.676-5.674c-0.656-0.658-0.729-1.644-0.281-2.412l-3.104-3.102c-1.669 1.238-3.728 1.979-5.965 1.979-5.54 0-10.031-4.491-10.031-10.031s4.491-10.032 10.031-10.032c5.541 0 10.031 4.491 10.031 10.032 0 2.579-0.98 4.923-2.58 6.7l3.035 3.035c0.768-0.447 1.754-0.375 2.41 0.283l5.676 5.674c0.784 0.785 0.784 2.056 0.001 2.839zM18.088 11.389c0-4.155-3.369-7.523-7.524-7.523s-7.524 3.367-7.524 7.523 3.368 7.523 7.523 7.523 7.525-3.368 7.525-7.523z"-->
-<!--              ></path>-->
-<!--            </svg>-->
-          </a>
+          <a href="/search"> <h1>Каталог</h1> </a>
         </nav>
       </section>
       <hr class="hr-shadow" />
     </header>
     <main class="main">
-      <section class="mine-section">
-        <!-- <div class="reclama-left"><img src="#" alt="Реклама" /></div> -->
-        <div class="content conteiner">
+      <section class="mine-section conteiner">
+        <div class="content">
           <div class="content-text">
-            <h1 class="content__title" >Информационно-аналитический портал дезинфицирующих средств</h1>
-            <h1 class="content__title" >Вся документация на антисептики и дезсредства, в свободном доступе</h1>
-            <br>
-            <br>
-            <br>
-            <br>
-            <h1 class="right-text" >"Найдите потребность и восполните её"</h1>
-            <h1 class="right-text" >Рут-Стаффорд Пил</h1>
+            <h1 class="content__title">
+              Информационно-аналитический портал дезинфицирующих средств
+            </h1>
+            <h1 class="content__title">
+              Вся документация на антисептики и дезсредства, в свободном доступе
+            </h1>
           </div>
-<!--          <img src="{{url_for('static', filename='img/tmp/16.png')}}" alt="Картинка" />-->
         </div>
-        <!-- <div class="reclama-right"><img src="#" alt="Реклама" /></div> -->
-      </section>
-      <h1 class="mess-to-user" >{{req1}}</h1>
-      <section class="main-section-down">
-        <!-- <div class="reclama-left-down"><img src="#" alt="Реклама" /></div> -->
-<!--        <div class="callback conteiner">-->
-<!--          <form method="POST" class="form" id="callback" action="{{ url_for('send_messag')}}">-->
-<!--            <input name="name" class="input" type="text" placeholder="Ваше имя" />-->
-<!--            <input name="email" class="input email" type="email" placeholder="Ваш адрес электронной почты" />-->
-<!--            <textarea-->
-<!--              name="massag"-->
-<!--              class="input masseg"-->
-<!--              id=""-->
-<!--              cols="20"-->
-<!--              rows="5"-->
-<!--              placeholder="Ваше сообщение...  (не более 1000 символов)"-->
-<!--            ></textarea>-->
-<!--            <div class="btn-callback">-->
-<!--              <button type="submit">Отправить</button>-->
-<!--              <button type="reset">Удалить</button>-->
-<!--            </div>-->
-<!--          </form>-->
-<!--          &lt;!&ndash; <img src="./img/tmp.py/1.jpg" alt="Картинка" /> &ndash;&gt;-->
-<!--        </div>-->
-        <!-- <div class="reclama-right-down"><img src="#" alt="Реклама" /></div> -->
+        <div class="search">
+          <form class="form-search" metod="GET" action="/found/">
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Введите название средства или часть наименования"
+              name="name"
+            />
+            <button id="found-click" class="faund" type="submit">Найти</button>
+          </form>
+        </div>
+        <div id="content1">
+          {% for item in data %}
+          <h1>{{item.name}}</h1>
+          <a href="{{item.link}}">Еще больше информации тут</a>
+          <hr class="hr-shadow dop" />
+          {% endfor %}
+          <h1>{{noSearch}}</h1>
+        </div>
+        <h1 class="right-text">"Найдите потребность и восполните её"</h1>
+        <h1 class="right-text">Рут-Стаффорд Пил</h1>
       </section>
     </main>
     <footer class="footer">
       <div class="footering conteiner">
-        <p>
-        </p>
+        <p></p>
         <p>&copy; БиблиоДез</p>
-<!--        <div class="logo">-->
-<!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
-<!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
-<!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
-<!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
-<!--        </div>-->
+        <!--        <div class="logo">-->
+        <!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
+        <!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
+        <!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
+        <!--          <a href="#"><img src="#" alt="Логотип кампании-партнера" /></a>-->
+        <!--        </div>-->
       </div>
     </footer>
   </body>
